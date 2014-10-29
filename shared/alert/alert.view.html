@@ -1,0 +1,32 @@
+<div ng-controller="AlertCtrl">
+  <alert 
+   ng-repeat="alert in alerts"
+   type="{{alert.type}}" 
+   close="closeAlert($index)">
+   {{alert.msg}}
+   </alert>
+   
+  <button 
+   class='btn btn-default'
+   ng-click="addAlert()">
+   Add Alert
+   </button>
+
+   <button 
+   class='btn btn-default'
+   ng-click="addDangerAlert( 'holo')">
+   Danger Alert
+   </button>
+
+   <button 
+   class='btn btn-default'
+   ng-click="addSuccessAlert('holo')">
+   Success Alert
+   </button>
+
+   <button 
+   class='btn btn-default'
+   ng-click="addAlertMessage('holo')">
+   Custom Alert
+   </button>
+</div>

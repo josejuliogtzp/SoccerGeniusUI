@@ -1,0 +1,57 @@
+<div ng-controller="RegisterCtrl" class="container">
+<div class="col-sm-8 col-sm-offset-2">
+    
+    <!-- PAGE HEADER -->
+    <div class="page-header"><h1>Register</h1></div>
+   
+    <!-- FORM -->
+    <!-- pass in the variable if our form is valid or invalid -->
+    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate> <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+
+       <!-- NAME -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+        <label>Name</label>
+        <input type="text" name="name" class="form-control" ng-model="user.name" required>
+        <p ng-show="userForm.name.$invalid && !userForm.name.$pristine" class="help-block">You name is required.</p>
+        <span class="error" ng-show="userForm.name.$error.required">
+    </div>
+    
+    <!-- USERNAME -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" ng-model="user.username" ng-minlength="4" ng-maxlength="32">
+        <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+        <p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+    </div>
+        
+    <!-- EMAIL -->
+    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+        <label>Email</label>
+        <input type="email" name="email" class="form-control" ng-model="user.email">
+        <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group" data-ng-class="{'has-error':userForm.password.$invalid && !userForm.password.$pristine}">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password" required data-ng-model="user.password" />
+        <span class="help-block" data-ng-show="userForm.password.$error.required">This is required.</span>
+    </div>
+
+    <!-- PASSWORD COMPARE -->
+   <div class="form-group" data-ng-class="{'has-error':userForm.passwordCompare.$invalid && !userForm.password.$pristine}">
+        <label for="passwordCompare">Confirm Password</label>
+        <input class="form-control" type="password" name="passwordCompare" required data-ng-model="user.passwordCompare" data-ng-match="user.password" />
+        <span class="help-block" data-ng-show="userForm.passwordCompare.$error.required">This is required.</span>
+        <span class="help-block" data-ng-show="userForm.passwordCompare.$error.ngMatch">Passwords do not match.</span>      
+    </div>
+    
+
+     <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+        
+    </form>
+
+</div><!-- col-sm-8 -->
+</div><!-- /container -->

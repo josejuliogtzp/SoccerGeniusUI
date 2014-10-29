@@ -1,0 +1,13 @@
+﻿<div ng-controller="CarouselCtrl">
+    <div style="height: 689px; height:300px">
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <h4>Slide {{$index}}</h4>
+                    <p>{{slide.text}}</p>
+                </div>
+            </slide>
+        </carousel>
+    </div>
+    <div style="width: 240px;height:200px; color: #333; background: #f8f8f8; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; ">hola</div>
